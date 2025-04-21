@@ -1,0 +1,58 @@
+{{- $metadata := "full" -}}
+{{ if isset .Params "metadata" }}
+    {{ $metadata = .Params.metadata }}
+{{ else }}
+    {{- with (index site.Params.pages .Type ) -}}
+        {{ if isset . "metadata" }}{{ $metadata = (index . "metadata") }}{{ end }}
+    {{- end -}}
+{{ end }}
+
+{{- $supportedStates := slice "full" "original" "none" -}}
+{{- if not (in $supportedStates $metadata) -}}
+    {{- errorf "layout [_default/single/header.html] - Invalid value for param 'metadata': %s" $metadata -}}
+{{- end -}}
+
+
+{{ $title := .Title }}
+{{ if site.Params.main.titleCase }}{{ $title = title $title }}{{ end }}
+
+{{ with $title }}<p class="display-5">{{ . }}</p>{{ end }}
+{{ with .Description }}<p class="lead mb-3">{{ . }}</p>{{ end }}
+{{ with .Params.author }}<div class="border-bottom">By {{ . }}</div>{{ end }}
+{{ if ne $metadata "none" }}
+    <small class="text-body-secondary text-uppercase">
+        {{ if .Date }}
+            {{ $lastmodstr := (partial "utilities/date.html" (dict "date" .Lastmod "format" "long")) -}}
+            {{ $datestr := (partial "utilities/date.html" (dict "date" .Date "format" "long")) -}}
+            {{ $datestr | i18n "postedOnDate" -}}
+            {{ if eq $metadata "full" }}
+                {{ if ne $datestr $lastmodstr -}}&nbsp;({{ $lastmodstr | i18n "lastModified" }}){{ end }}
+            {{ end }}
+            &bull;
+        {{ end }}
+        {{ .ReadingTime | lang.FormatNumber 0 }}&nbsp;{{ i18n "minutesShort" }} {{ i18n "read" }} &bull;
+        {{ .WordCount | lang.FormatNumber 0 }}&nbsp;{{ i18n "words" }}
+    </small>
+{{ end }}
+
+{{- if gt (len (.GetTerms "tags")) 0 -}}
+    <div class="my-3">
+        <div class="d-none-dark">
+            <div class="hstack gap-1">
+                {{ range (.GetTerms "tags") -}}
+                    {{- $url := .Page.RelPermalink -}}
+                    {{ partial "assets/button.html" (dict "href" $url "title" .LinkTitle "color" "light" "size" "sm") }}
+                {{ end -}}
+            </div>
+        </div>
+
+        <div class="d-none-light">
+            <div class="hstack gap-1">
+                {{ range (.GetTerms "tags") -}}
+                    {{- $url := .Page.RelPermalink -}}
+                    {{ partial "assets/button.html" (dict "href" $url "title" .LinkTitle "color" "primary" "size" "sm" "outline" "true") }}
+                {{ end -}}
+            </div>
+        </div>
+    </div>
+{{- end -}}

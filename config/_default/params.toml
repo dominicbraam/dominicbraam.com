@@ -1,0 +1,117 @@
+[main]
+endorse = false
+[main.externalLinks]
+cue = true
+tab = true
+
+[contact]
+email = "dominic.braam@gmail.com"
+
+[head]
+tagline = "Portfolio"
+
+[social]
+title = "Let's Connect!"
+caption = "Follow to get a peek into what I'm up to."
+
+[home]
+sections = [ "posts", "projects" ]
+fullCover = false
+centerHeadline = true
+[home.feature]
+orientation = "horizontal"
+color = "primary"
+width = 5
+align = "start"
+
+[navigation]
+anchor = true
+logo = "/img/DB_logo_2022.png"
+color = "body"
+fixed = true
+overlay = false
+overlayMode = "dark"
+horizontal = false
+offset = "5.5rem"
+offsetXS = "5.5rem"
+search = true
+searchModal = false
+breadcrumb = true
+toc = true
+sidebar = true
+size = "md"
+
+[sections]
+[sections.posts]
+title = "Recent Posts"
+sort = "date"
+reverse = true
+cols = 3
+color = "body-tertiary"
+padding = "4"
+header = "none"
+footer = "tags"
+orientation = "stacked"
+style = "border-0 card-zoom card-body-margin rounded"
+homepage = 4
+separator = false
+[sections.projects]
+title = "Projects"
+layout = "card"
+sort = "title"
+reverse = false
+nested = true
+cols = 2
+background = "body-tertiary"
+color = "body"
+padding = "4"
+header = "none"
+footer = "tags"
+orientation = "horizontal"
+style = "border-0 card-emphasize"
+homepage = 3
+separator = false
+
+[favicon]
+logo = "img/DB_logo_2022.png"
+sizes = [ 16, 32, 48 ]
+
+[schema]
+type = "Personal"
+name = "Portfolio - Dominic Braam"
+locale = "en-US"
+section = "posts"
+[schema.author]
+name = "Dominic Braam"
+linkedin = "https://www.linkedin.com/in/dominicbraam/"
+github = "https://github.com/dominicbraam"
+[schema.logo]
+url = "img/DB_logo_2022.png"
+width = 512
+height = 512
+[schema.image]
+url = "img/DB_logo_2022.png"
+width = 1280
+height = 640
+
+[style]
+primary = "#268bd2"   # Blue accent (Solarized Blue) :contentReference[oaicite:1]{index=1}
+secondary = "#586e75" # Neutral content tone (Solarized Base01) :contentReference[oaicite:2]{index=2}
+success = "#859900"   # Green accent (Solarized Green) :contentReference[oaicite:3]{index=3}
+info = "#2aa198"      # Cyan accent (Solarized Cyan) :contentReference[oaicite:4]{index=4}
+warning = "#b58900"   # Yellow accent (Solarized Yellow) :contentReference[oaicite:5]{index=5}
+danger = "#dc322f"    # Red accent (Solarized Red) :contentReference[oaicite:6]{index=6}
+light = "#fdf6e3"     # Light background (Solarized Base3) :contentReference[oaicite:7]{index=7}
+dark = "#002b36"      # Dark background (Solarized Base03) :contentReference[oaicite:8]{index=8}
+
+themeOpacity = "25"
+darkModeShade = "20%"
+darkModeTint = "40%"
+
+themeFont = "Inter"
+# themeFontPath = "https://fonts.googleapis.com/css2?family=Inter:wght@200;300;600&display=swap" # external path
+themeFontPath = "/fonts"                                  # local path
+themeFontPreload = "/fonts/inter-v12-latin-regular.woff2"
+fontSizeBase = "1rem"                                     # assumes the browser default, typically '16px'
+
+purge = true
