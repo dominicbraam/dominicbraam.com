@@ -72,6 +72,15 @@ style = "border-0 card-emphasize"
 homepage = 3
 separator = false
 
+[utterances]
+# Client script endpoint.
+# default is utterances endpoint
+# endpoint = "https://dominicbraam.com/"
+repo = "dominicbraam/dominicbraam.com"
+mapping = "pathname"
+label = "comments"
+theme = "github-light"
+
 [favicon]
 logo = "img/DB_logo_2022.png"
 sizes = [ 16, 32, 48 ]
